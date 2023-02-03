@@ -25,6 +25,7 @@ class MainPage extends StatelessWidget {
     timeDilation = 5.0;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        heroTag: 'hero-fab',
         onPressed: () => _toPage(context),
         child: Builder(builder: (context) {
           return Material(
@@ -40,12 +41,7 @@ class MainPage extends StatelessWidget {
                     backgroundColor: getColor(index),
                     radius: 75,
                   )),
-            Hero(
-              tag: 'hero-fab',
-              child: Visibility(
-                visible: true,
-                child: ElevatedButton(onPressed: (){}, child: Text('HERO'))),
-            )
+           
           //  Hero(tag: 'hero-fab', child: CircularProgressIndicator())
         ],
       ),
@@ -91,12 +87,13 @@ class SecondaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Hero(
-      tag: 'hero-fab',
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        body: Builder(builder: (context) {
-          return ListView(children: [
+    return Scaffold(
+      // backgroundColor: Colors.black,
+      body: Builder(builder: (context) {
+        return Hero(
+        
+          tag: 'hero-fab',
+          child: ListView(children: [
             Material(
               child: InkWell(
                 onTap: Navigator.of(context).pop,
@@ -129,9 +126,9 @@ class SecondaryPage extends StatelessWidget {
                 ),
               ),
             )
-          ]);
-        }),
-      ),
+          ]),
+        );
+      }),
     );
   }
 }
